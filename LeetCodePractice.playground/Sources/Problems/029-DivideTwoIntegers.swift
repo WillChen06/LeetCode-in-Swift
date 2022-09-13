@@ -10,7 +10,7 @@ public class DivideTwoIntegersSolution {
         }
         
         var input = abs(dividend)
-        var div = abs(divisor)
+        let div = abs(divisor)
         
         while input >= div {
             input = input - div
@@ -49,7 +49,7 @@ public class DivideTwoIntegersSolution {
         }
         
         var input = UInt(abs(dividend))
-        var div = UInt(abs(divisor))
+        let div = UInt(abs(divisor))
         
         while input >= div {
             var temp = UInt(div)

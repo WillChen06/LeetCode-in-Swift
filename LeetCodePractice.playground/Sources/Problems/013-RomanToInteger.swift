@@ -24,8 +24,48 @@ enum Roman: String {
 
 public class RomanToIntegerSolution {
     public static func romanToInt(_ s: String) -> Int {
-        let arr = Array(s).compactMap({ $0 })
-        print("Roman Arr : \(arr)")
-        return 0
+        let array = Array(s)
+        var result = 0
+        for (index, char) in array.enumerated() {
+            let roman = Roman(rawValue: String(char))
+            switch roman {
+            case .one:
+                if index < array.count - 1 {
+                    let next = array[index + 1]
+                    if next == "V" || next == "X" {
+                        result -= 1
+                    } else {
+                        result += 1
+                    }
+                } else {
+                    result += 1
+                }
+            case .ten:
+                if index < array.count - 1 {
+                    let next = array[index + 1]
+                    if next == "L" || next == "C" {
+                        result -= 10
+                    } else {
+                        result += 10
+                    }
+                } else {
+                    result += 10
+                }
+            case .hundred:
+                if index < array.count - 1 {
+                    let next = array[index + 1]
+                    if next == "D" || next == "M" {
+                        result -= 100
+                    } else {
+                        result += 100
+                    }
+                } else {
+                    result += 100
+                }
+            default:
+                result += roman?.value ?? 0
+            }
+        }
+        return result
     }
 }
